@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake Instagram Profile Detection</title>
+</head>
+<body>
+    <h2>Fake Instagram Profile Detection</h2>
+
+    <form action="/predict" method="post">
+        <input type="number" step="any" name="profile_pic" placeholder="Profile Pic (1/0)" required><br>
+        <input type="number" step="any" name="username_ratio" placeholder="Nums/Length Username" required><br>
+        <input type="number" step="any" name="fullname_words" placeholder="Fullname Words" required><br>
+        <input type="number" step="any" name="fullname_ratio" placeholder="Nums/Length Fullname" required><br>
+        <input type="number" step="any" name="name_username" placeholder="Name == Username (1/0)" required><br>
+        <input type="number" step="any" name="bio_length" placeholder="Description Length" required><br>
+        <input type="number" step="any" name="external_url" placeholder="External URL (1/0)" required><br>
+        <input type="number" step="any" name="private" placeholder="Private (1/0)" required><br>
+        <input type="number" step="any" name="posts" placeholder="Posts" required><br>
+        <input type="number" step="any" name="followers" placeholder="Followers" required><br>
+        <input type="number" step="any" name="follows" placeholder="Follows" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Result: {{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>
