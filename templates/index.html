@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Fake Instagram Profile Detection</title>
+
+    <!-- CSS CONNECT -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    <h2>Fake Instagram Profile Detection</h2>
+    <div class="container">
+        <h2><b><u>Fake Instagram Profile Detection</u></b></h2>
+        <p>AI-based system to identify fake Instagram accounts</p>
 
-    <form action="/predict" method="post">
-        <input type="number" step="any" name="profile_pic" placeholder="Profile Pic (1/0)" required><br>
-        <input type="number" step="any" name="username_ratio" placeholder="Nums/Length Username" required><br>
-        <input type="number" step="any" name="fullname_words" placeholder="Fullname Words" required><br>
-        <input type="number" step="any" name="fullname_ratio" placeholder="Nums/Length Fullname" required><br>
-        <input type="number" step="any" name="name_username" placeholder="Name == Username (1/0)" required><br>
-        <input type="number" step="any" name="bio_length" placeholder="Description Length" required><br>
-        <input type="number" step="any" name="external_url" placeholder="External URL (1/0)" required><br>
-        <input type="number" step="any" name="private" placeholder="Private (1/0)" required><br>
-        <input type="number" step="any" name="posts" placeholder="Posts" required><br>
-        <input type="number" step="any" name="followers" placeholder="Followers" required><br>
-        <input type="number" step="any" name="follows" placeholder="Follows" required><br>
+        <form action="/predict" method="post">
+            <input type="number" name="profile_pic" placeholder="Profile Picture (1/0)" required>
+            <input type="number" step="any" name="username_ratio" placeholder="Username Numeric Ratio" required>
+            <input type="number" name="fullname_words" placeholder="Full Name Word Count" required>
+            <input type="number" step="any" name="fullname_ratio" placeholder="Fullname Numeric Ratio" required>
+            <input type="number" name="name_username" placeholder="Name equals Username (1/0)" required>
+            <input type="number" name="bio_length" placeholder="Bio Length" required>
+            <input type="number" name="external_url" placeholder="External URL (1/0)" required>
+            <input type="number" name="private" placeholder="Private Account (1/0)" required>
+            <input type="number" name="posts" placeholder="Total Posts" required>
+            <input type="number" name="followers" placeholder="Followers" required>
+            <input type="number" name="follows" placeholder="Following" required>
 
-        <button type="submit">Predict</button>
-    </form>
-     <p>Made by Adarsh </p>
+            <button type="submit">Predict</button>
+        </form>
 
-    {% if prediction %}
-        <h3>Result: {{ prediction }}</h3>
-    {% endif %}
+        {% if prediction %}
+            <div class="result {{ 'fake' if prediction=='FAKE PROFILE' else 'real' }}">
+                Result: {{ prediction }}
+            </div>
+        {% endif %}
+
+        <footer>
+            © AI Fake Profile Detection BY ADARSH 
+        </footer>
+    </div>
 </body>
 </html>
+
